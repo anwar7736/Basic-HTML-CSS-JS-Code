@@ -1,0 +1,3 @@
+UPDATE CLPGiftProcess SET GiftStatus = 1, OutletOrderID = 0 WHERE CLPID IN (SELECT CLPID FROM CLP WHERE Code='NH003') 
+AND ProcessDate BETWEEN '1 June 2021' AND '30 June 2021'
+AND OutletID=(SELECT o.OutletID FROM Outlet AS o WHERE o.Code='5004157-0080')

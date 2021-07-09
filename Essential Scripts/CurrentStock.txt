@@ -1,0 +1,12 @@
+
+
+SELECT SKUID FROM SKU WHERE Name = 'LACTOGEN 1 Infant Form Tin 24x400g N2 BD'
+
+
+SELECT * FROM SKUBatchStock WHERE SKUID = 'SKU_ID'
+
+
+UPDATE SKUBatchStock SET SoundStock='Current_Qty' WHERE SKUID = 'SKU_ID'
+
+
+UPDATE SKUBatchStock SET SoundStock='Current_Qty' WHERE SKUID = 'SKU_ID' AND BatchNo = '12465569-00021'
