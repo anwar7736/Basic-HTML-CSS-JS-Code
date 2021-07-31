@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+	h1{
+    	position:absolute;
+        top:200px;
+        left:200px;
+        
+        
+    }
+</style>
+</head>
+<body onContextMenu = "return false">
+
+<h1 id="clock" style="color:red; font-size:100px"></h1>
+
+<script>
+	setInterval(clock)
+    
+    function clock()
+    {
+    	var time = new Date();
+        var hour = time.getHours();
+        var min = time.getMinutes();
+        var sec = time.getSeconds();
+        var en = 'AM';
+        if(hour < 10)
+        {
+        	hour = '0' + hour;
+        } 
+        
+        if(min < 10)
+        {
+        	min = '0' + min;
+        } 
+        
+        if(sec < 10)
+        {
+        	sec = '0' + sec;
+        } 
+        
+        
+        if(hour >=12)
+        {
+        
+        	en = 'PM';
+            hour = hour - 12;
+            hour = '0' + hour;
+        }
+        
+        document.getElementById('clock').innerHTML = hour + ':' + min + ':' + sec + ' ' + en;
+      
+    }
+    
+</script>
+</body>
+</html>
