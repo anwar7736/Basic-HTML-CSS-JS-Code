@@ -25,11 +25,7 @@
         var hour = time.getHours();
         var min = time.getMinutes();
         var sec = time.getSeconds();
-        var en = '';
-        if(hour < 10)
-        {
-        	hour = '0' + hour;
-        } 
+        var en = '';     
         
         if(min < 10)
         {
@@ -62,7 +58,10 @@
 		if(hour > 12)
 		{
 			hour = hour - 12;
-			hour = '0' + hour;
+			if(hour < 10)
+       			 {
+        			hour = '0' + hour;
+       			 } 			
 		}
         
         document.getElementById('clock').innerHTML = hour + ':' + min + ':' + sec + ' ' + en;
