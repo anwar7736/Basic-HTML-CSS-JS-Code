@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: black;
+  color: red;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+input[type=text]{
+	border:1px solid gray;
+}
+
+</style>
+</head>
+<body>
+<div class="row">
+	<div style="" class="col-md-6 container-fluid m-4">
+<h3><center>Send Notification Via 3 Way</center></h3>
+  <div class="tab">
+    <button class="tablinks active" onclick="openCity(event, 'database')">Database</button>
+    <button class="tablinks" onclick="openCity(event, 'email')">E-mail</button>
+    <button class="tablinks" onclick="openCity(event, 'sms')">SMS</button>
+  </div>
+
+<div id="database" class="tabcontent" style="display:block">
+	<br/>
+  <h5><center>Notification Send via Database</center></h5>
+ <hr/>
+      <form method="POST" onSubmit="">
+      <div class="form-group">
+        <label for="name">Your Name :</label>
+        <input type="text" class="form-control" value="" onChange="" placeholder="Enter your name..." id="name0">
+      </div>
+      <div class="form-group">
+        <label for="title">Message Title :</label>
+        <input type="text" class="form-control" value="" onChange="" placeholder="Enter message title..." id="title">
+      </div>
+      <div class="form-group">
+        <label for="body">Message Body :</label>
+        <textarea rows="5" class="form-control" value="" onChange="" id="body">
+        </textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Send</button>
+    </form> 
+
+</div>
+
+<div id="email" class="tabcontent">
+		<br/>
+   <h5><center>Notification Send via E-mail</center></h5>
+    <hr/>
+  <form method="POST" onSubmit="">
+      <div class="form-group">
+        <label for="name">From :</label>
+        <input type="email" class="form-control" value=""  readonly placeholder="Enter your name..." id="name2">
+      </div>
+      <div class="form-group">
+        <label for="name">To :</label>
+        <label>
+        	<input type="radio" checked name="via" onclick="showReceiver('custom')" id="custom" value=""/> Custom
+        </label>
+        <label>
+        	<input type="radio" name="via" onclick="showReceiver('all')" id="all" value=""/> All
+        </label>
+        <input type="text" class="form-control" value="" onChange="" placeholder="Enter receivers mail addresses..." id="name"/>
+      </div>
+      <div class="form-group">
+        <label for="title">Message Title :</label>
+        <input type="text" class="form-control" value="" onChange="" placeholder="Enter message title..." id="title"/>
+      </div>
+      <div class="form-group">
+        <label for="body">Message Body :</label>
+        <textarea rows="5" class="form-control" value="" onChange="" id="body">
+        </textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Send</button>
+    </form> 
+</div>
+
+<div id="sms" class="tabcontent">
+	<br/>
+   <h5><center>Notification Send via SMS</center></h5>
+    <hr/>
+  <form method="POST" onSubmit="">
+      <div class="form-group">
+        <label for="name">From :</label>
+        <input type="email" class="form-control" value=""  readonly placeholder="Enter your name..." id="name2">
+      </div>
+      <div class="form-group">
+        <label for="name">To :</label>
+        <label>
+        	<input type="radio" checked name="via" onclick="showReceiver('custom')" id="custom" value=""/> Custom
+        </label>
+        <label>
+        	<input type="radio" name="via" onclick="showReceiver('all')" id="all" value=""/> All
+        </label>
+        <input type="text" class="form-control" value="" onChange="" placeholder="Enter receivers mail addresses..." id="name"/>
+      </div>
+      <div class="form-group">
+        <label for="title">Message Title :</label>
+        <input type="text" class="form-control" value="" onChange="" placeholder="Enter message title..." id="title"/>
+      </div>
+      <div class="form-group">
+        <label for="body">Message Body :</label>
+        <textarea rows="5" class="form-control" value="" onChange="" id="body">
+        </textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Send</button>
+    </form> 
+</div>
+</div>
+<div class="col-md-5 m-4">
+<h4>All Notification List</h4>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+function showReceiver(action)
+{
+	if(action=='custom')
+    {
+    	 document.getElementById('name').style.display ="block";
+    }
+    else
+    {
+    	 document.getElementById('name').style.display ="none";
+    }
+}
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+</html>
